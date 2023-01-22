@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.wrapper {
+    padding: 1rem 2rem;
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--text-color);
+}
+
+.title {
+    font-size: 1rem;
+}
+
+.form {
+    display: flex;
+    width: 24rem;
+    flex-direction: column;
+    gap: 30px;
+}
+.form input {
+    border: none;
+    outline: none;
+    border-bottom: .1rem solid grey;
+    padding: .4rem;
+}
+
+.form input::placeholder {
+    font-style: italic;
+}
+
+.link {
+    font-style: italic;
+    font-size: 14px;
+}

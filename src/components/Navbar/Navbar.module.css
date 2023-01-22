@@ -1,0 +1,41 @@
+.navbar {
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background-color: #43596a;
+    padding: 0 5px;
+}
+
+.logo {
+    color: white;
+    font-size: 20px;
+}
+
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.userInfo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: grey;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.userInfo span {
+    font-size: 14px;
+}
+
+.navbar button {
+    padding: 3px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 12px;
+}

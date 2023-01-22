@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #d7d7d7;
+  background-image: url('./img/chat_background_start_page.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@font-face {
+  font-family: 'FuzzyBubbles';
+  src: url('./fonts/FuzzyBubbles-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'FuzzyBubbles';
+  src: url('./fonts/FuzzyBubbles-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --text-color: #6c5f5f;
+  --light-text-color: lightgrey;
+  --border-color: lightgrey; 
+  --font-family: 'Fuzzy Bubbles', cursive, Arial, sans-serif;
+  --box-shadow: 1px 1px 4px lightgray;
+  --border-radius: 4px;
+  --primary-color: #2c3b46;
+  --active-btn: #425969;
+  --bg-btn-color: white;
+  --bg-btn-active-color: #93B5C6;
+  --bg-color-primary: whitesmoke;
+  --bg-color-secondary: silver;
+  --bg-color-hover: rgba(211, 211, 211, 0.377);
+}

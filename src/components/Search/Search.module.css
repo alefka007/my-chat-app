@@ -1,0 +1,43 @@
+.search {
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-color-primary);
+}
+
+.searchForm {
+    padding: 10px;
+}
+
+.searchForm input {
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    outline: none;
+    width: 100%;
+    padding: 5px 10px;
+    background-color: white;
+}
+
+.searchForm input::placeholder {
+    font-family: var(--font-family);
+    font-weight: 300;
+    font-size: 14px;
+    color: var(--light-text-color);
+}
+
+.userChat {
+    padding: 10px;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+    cursor: pointer;
+}
+
+.userChat:hover {
+    background-color: var(--bg-color-hover);
+}
+
+.userChat img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
