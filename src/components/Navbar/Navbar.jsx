@@ -1,6 +1,8 @@
-import React from 'react'
-import Button from '../Button/Button'
-import classes from './Navbar.module.css'
+import React from 'react';
+import Button from '../Button/Button';
+import classes from './Navbar.module.css';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase';
 
 const Navbar = () => {
     return (
@@ -9,7 +11,7 @@ const Navbar = () => {
             <div className={classes.userInfo}>
                 <img src='https://get.pxhere.com/photo/person-people-portrait-facial-expression-hairstyle-smile-emotion-portrait-photography-134689.jpg' alt='' />
                 <span>Vasya</span>
-                <Button>Выйти</Button>
+                <Button onClick={() => signOut(auth)}>Выйти</Button>
             </div>
         </div>
     )

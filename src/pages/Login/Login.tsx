@@ -2,7 +2,7 @@ import React from "react";
 import classes from './Login.module.css';
 import Button from '../../components/Button/Button';
 import { Link } from 'react-router-dom';
-import { REGISTRATION_ROUTE } from "../../routes/routes";
+import { REGISTER_ROUTE } from "../../routes/routes";
 
 const Login = () => {
 
@@ -23,7 +23,7 @@ const Login = () => {
                     <input name='password' placeholder='Введите пароль' type='password' />
                     <Button type='submit'>Войти</Button>
                 </form>
-                <span className={classes.link}>У вас уже есть аккаунт? <Link to={REGISTRATION_ROUTE}>Зарегистрироваться</Link></span>
+                <span className={classes.link}>У вас уже есть аккаунт? <Link to={REGISTER_ROUTE}>Зарегистрироваться</Link></span>
             </div>
         </div>
     )

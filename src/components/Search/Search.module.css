@@ -28,11 +28,6 @@
     align-items: center;
     gap: 10px;
     display: flex;
-    cursor: pointer;
-}
-
-.userChat:hover {
-    background-color: var(--bg-color-hover);
 }
 
 .userChat img {
