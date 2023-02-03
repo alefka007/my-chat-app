@@ -13,6 +13,8 @@ body {
   background-size: cover;
 }
 
+/*fonts*/
+
 @font-face {
   font-family: 'FuzzyBubbles';
   src: url('./fonts/FuzzyBubbles-Bold.woff') format('woff');
@@ -27,6 +29,7 @@ body {
   font-style: normal;
 }
 
+/*global-style*/
 :root {
   --text-color: #6c5f5f;
   --light-text-color: lightgrey;
@@ -37,8 +40,10 @@ body {
   --primary-color: #2c3b46;
   --active-btn: #425969;
   --bg-btn-color: white;
+  --bg-color-message: #dbe3ed;
   --bg-btn-active-color: #93B5C6;
   --bg-color-primary: whitesmoke;
   --bg-color-secondary: silver;
   --bg-color-hover: rgba(211, 211, 211, 0.377);
+  --bg-color-loader: blue;
 }

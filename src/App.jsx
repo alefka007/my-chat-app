@@ -1,19 +1,38 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Router from './components/Router/Router';
+import React, { useContext } from 'react';
+import {BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import Home from './pages/Home/Home';
-
+import { AuthContext } from './context/AuthContext';
 
 const App = () => {
-    return (
-        <div>
-            <BrowserRouter>
+  const currentUser = useContext(AuthContext);
+  console.log(currentUser)
+
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to='/login' />
+    }
+    return children
+  }
+
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/'>
+            <Route index element={
+              <ProtectedRoute>
                 <Home />
-            </BrowserRouter>
-        </div>
-    )
+              </ProtectedRoute>
+            } />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
 }
 
 export default App

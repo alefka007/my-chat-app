@@ -34,3 +34,16 @@
 .messageContent img {
   width: 50%;
 }
+
+.opposite {
+  flex-direction: row-reverse;
+}
+
+.opposite .messageContent {
+  align-items: flex-end;
+}
+
+.opposite p {
+  border-radius: 10px 0 10px 10px;
+  background-color: var( --bg-color-message);
+}

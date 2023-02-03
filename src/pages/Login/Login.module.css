@@ -33,6 +33,7 @@
     flex-direction: column;
     gap: 30px;
 }
+
 .form input {
     border: none;
     outline: none;

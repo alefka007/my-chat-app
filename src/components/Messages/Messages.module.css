@@ -3,3 +3,7 @@
   height: calc(100% - 140px);
   overflow-y: scroll;
 }
+
+.messages::-webkit-scrollbar {
+  display: none;
+}
