@@ -35,7 +35,7 @@ body {
   --light-text-color: lightgrey;
   --border-color: lightgrey; 
   --font-family: 'Fuzzy Bubbles', cursive, Arial, sans-serif;
-  --box-shadow: 1px 1px 4px lightgray;
+  --box-shadow: 1px 1px 4px grey;
   --border-radius: 4px;
   --primary-color: #2c3b46;
   --active-btn: #425969;

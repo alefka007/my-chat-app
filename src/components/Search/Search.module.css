@@ -1,6 +1,6 @@
 .search {
     border-bottom: 1px solid var(--border-color);
-    background-color: var(--bg-color-primary);
+    padding: 10px;
 }
 
 .searchForm {
@@ -35,4 +35,15 @@
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.userChat:hover {
+    background-color: var(--bg-color-hover);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+}
+
+.searchMessage {
+    text-align: center;
+    font-size: 14px;
 }

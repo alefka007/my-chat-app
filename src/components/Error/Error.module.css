@@ -4,4 +4,7 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
+    font-size: 25px;
+    color: red;
+    background-color: white;
 }

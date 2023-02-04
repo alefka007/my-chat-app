@@ -31,6 +31,7 @@ const Login = () => {
         <span className={classes.logo}>Мой чат</span>
         <span className={classes.title}>Вход</span>
         <form onSubmit={submitHandler} className={classes.form}>
+        {error && <span className={classes.errorMessage}>Что то пошло не так!</span>}
           <input placeholder="Введите почту" type='email' />
           <input placeholder='Введите пароль' type='password' />
           <Button type='submit'>Войти</Button>
