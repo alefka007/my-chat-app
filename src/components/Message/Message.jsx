@@ -1,7 +1,8 @@
 import React from 'react';
 import classes from './Message.module.css';
 
-const Message = () => {
+const Message = ({message}) => {
+  console.log(message, 'message')
   return (
     <div className={classes.message + ' ' + classes.opposite}>
       <div className={classes.messageInfo}>

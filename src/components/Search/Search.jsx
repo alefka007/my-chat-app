@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
+
 import classes from './Search.module.css';
 import {
   collection,
@@ -13,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { db } from '../../firebase/index';
 import { AuthContext } from '../../context/AuthContext';
+import { ChatContext } from '../../context/ChatContext';
 
 
 const Search = () => {
@@ -21,23 +23,20 @@ const Search = () => {
   const [error, setError] = useState(false);
 
   const currentUser = useContext(AuthContext);
+  const { dispatch } = useContext(ChatContext);
 
   const handleSearch = async () => {
     try {
-
       const q = query(
         collection(db, 'users'), where('displayName', '==', userName)
       )
-
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((doc) => {
         setSearchUser(doc.data());
       });
-
     } catch (e) {
       setError(true)
     }
-
   }
 
   const handleKey = (e) => {
@@ -59,7 +58,7 @@ const Search = () => {
       }
 
       await updateDoc(doc(db, 'userChats', currentUser.uid), {
-        [combinedId + '.userInfo']:{
+        [combinedId + '.userInfo']: {
           uid: searchUser.uid,
           displayName: searchUser.displayName,
           photoURL: searchUser.photoURL
@@ -68,7 +67,7 @@ const Search = () => {
       })
 
       await updateDoc(doc(db, 'userChats', searchUser.uid), {
-        [combinedId + '.userInfo']:{
+        [combinedId + '.userInfo']: {
           uid: currentUser.uid,
           displayName: currentUser.displayName,
           photoURL: currentUser.photoURL
@@ -76,11 +75,10 @@ const Search = () => {
         [combinedId + '.date']: serverTimestamp()
       })
 
-    } catch (e) {
+      dispatch({ type: 'CHANGE_USER', payload: searchUser });
 
-    }
+    } catch (e) { }
 
-    
     setUserName('');
     setSearchUser(null);
   }
@@ -97,7 +95,7 @@ const Search = () => {
       </div>
       {error && <div className={classes.searchMessage}>Пользователь не найден!</div>}
       {searchUser &&
-        <div onClick={handleSelect}
+        <div onClick={() => handleSelect()}
           className={classes.userChat}>
           <img src={searchUser.photoURL} alt='фото'></img>
           <div className={classes.userChatInfo}>
