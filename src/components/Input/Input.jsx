@@ -5,6 +5,10 @@ import addImg from '../../img/add.png';
 import attach from '../../img/attach.png';
 import { AuthContext } from '../../context/AuthContext';
 import { ChatContext } from '../../context/ChatContext';
+import { updateDoc, arrayUnion, doc, Timestamp, serverTimestamp } from "firebase/firestore";
+import { db, storage } from '../../firebase';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import uuid from 'react-uuid';
 
 const Input = () => {
   const [text, setText] = useState('');
@@ -13,8 +17,58 @@ const Input = () => {
   const currentUser = useContext(AuthContext);
   const { state } = useContext(ChatContext);
 
-  const handleSend = () => {
+  const handleSend = async () => {
+    if (img) {
+      const uploadTask = uploadBytesResumable(ref(storage, uuid()), img);
+      uploadTask.on(
+        (err) => {
 
+        },
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+            await updateDoc(doc(db, 'chats', state.chatId), {
+              messages: arrayUnion({
+                id: uuid(),
+                text,
+                senderId: currentUser.uid,
+                date: Timestamp.now(),
+                img: downloadURL
+              })
+            })
+          })
+        },
+        (err) => {
+          // setError(true);
+        }
+      )
+
+    } else {
+      await updateDoc(doc(db, 'chats', state.chatId), {
+        messages: arrayUnion({
+          id: uuid(),
+          text,
+          senderId: currentUser.uid,
+          date: Timestamp.now()
+        })
+      })
+    }
+
+    await updateDoc(doc(db, 'userChats', currentUser.uid, {
+      [state.chatId +".lastMessage"]: {
+        text
+      },
+      [state.chatId + '.date']: serverTimestamp()
+    }))
+
+    await updateDoc(doc(db, 'userChats', state.user.uid, {
+      [state.chatId +".lastMessage"]: {
+        text
+      },
+      [state.chatId + '.date']: serverTimestamp()
+    }))
+
+    setText('');
+    setImg(null);
   }
 
   return (
@@ -31,7 +85,7 @@ const Input = () => {
         <label>
           <input type='file'
             style={{ display: 'none' }}
-            onChange={(e) => setImg(e.target.file[0])}
+            onChange={(e) => setImg(e.target.files[0])}
           />
           <img src={addImg} alt='addImg' />
         </label>

@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
+import { ChatContext } from '../../context/ChatContext';
 import classes from './Message.module.css';
 
 const Message = ({message}) => {
-  console.log(message, 'message')
+
   return (
     <div className={classes.message + ' ' + classes.opposite}>
       <div className={classes.messageInfo}>
