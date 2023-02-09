@@ -4,16 +4,20 @@ import { ChatContext } from '../../context/ChatContext';
 import classes from './Message.module.css';
 
 const Message = ({message}) => {
+  const currenUser = useContext(AuthContext);
+  const { state } = useContext(ChatContext);
 
   return (
-    <div className={classes.message + ' ' + classes.opposite}>
+    <div className={message.senderId === currenUser.uid ? classes.message : 
+      (classes.message + ' ' + classes.opposite)}>
       <div className={classes.messageInfo}>
-        <img src='https://avatars.mds.yandex.net/i?id=14c5cfe3adae7015a4181814bbc70e83cb346f40-8191391-images-thumbs&n=13&exp=1' alt='photo' />
-        <span>just now</span>
+        <img src={message.senderId === currenUser.uid ? currenUser.photoURL :
+          state.user.photoURL} alt='photo' />
+        <span>{message}</span>
       </div>
       <div className={classes.messageContent}>
-        <p>hello</p>
-        <img src='https://avatars.mds.yandex.net/i?id=14c5cfe3adae7015a4181814bbc70e83cb346f40-8191391-images-thumbs&n=13&exp=1' alt='photo' />
+        <p>{message.text}</p>
+        {message.img && <img src={message.img} alt='photo' />}
       </div>
     </div>
   )

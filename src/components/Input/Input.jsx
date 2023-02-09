@@ -19,7 +19,9 @@ const Input = () => {
 
   const handleSend = async () => {
     if (img) {
-      const uploadTask = uploadBytesResumable(ref(storage, uuid()), img);
+      const storageRef = ref(storage, uuid());
+      const uploadTask = uploadBytesResumable(storageRef, img);
+      
       uploadTask.on(
         (err) => {
 
@@ -37,9 +39,6 @@ const Input = () => {
             })
           })
         },
-        (err) => {
-          // setError(true);
-        }
       )
 
     } else {
@@ -53,19 +52,19 @@ const Input = () => {
       })
     }
 
-    await updateDoc(doc(db, 'userChats', currentUser.uid, {
-      [state.chatId +".lastMessage"]: {
+    await updateDoc(doc(db, 'userChats', currentUser.uid), {
+      [state.chatId + '.lastMessage']: {
         text
       },
       [state.chatId + '.date']: serverTimestamp()
-    }))
+    })
 
-    await updateDoc(doc(db, 'userChats', state.user.uid, {
-      [state.chatId +".lastMessage"]: {
+    await updateDoc(doc(db, 'userChats', state.user.uid), {
+      [state.chatId + '.lastMessage']: {
         text
       },
       [state.chatId + '.date']: serverTimestamp()
-    }))
+    })
 
     setText('');
     setImg(null);

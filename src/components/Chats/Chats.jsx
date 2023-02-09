@@ -32,7 +32,7 @@ const Chats = () => {
 
   return (
     <div className={classes.chats}>
-      {Object.entries(chats)?.map((chat) => (
+      {Object.entries(chats)?.sort((a,b) => b[1].date - a[1].date).map((chat) => (
         <div
           key={chat[0]}
           className={classes.userChat}
@@ -41,7 +41,7 @@ const Chats = () => {
           <img src={chat[1].userInfo.photoURL} alt='фото' />
           <div className={classes.userChatInfo}>
             <span>{chat[1].userInfo.displayName}</span>
-            <p>{chat[1].userInfo.lastMessage?.text}</p>
+            <p>{chat[1].lastMessage?.text}</p>
           </div>
         </div>
       ))}
