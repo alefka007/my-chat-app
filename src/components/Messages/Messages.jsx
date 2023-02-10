@@ -22,8 +22,6 @@ const Messages = () => {
     state.chatId && getMessages();
   }, [state.chatId])
 
-  debugger
-
   return (
     <div className={classes.messages}>
       {messages.map(mes => (
