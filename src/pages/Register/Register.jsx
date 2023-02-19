@@ -10,7 +10,12 @@ import addIcon from '../../img/add.png';
 
 const Register = () => {
   const [error, setError] = useState(false);
+  const [file, setFile] = useState(null);
   const navigate = useNavigate();
+
+  const fileChangeHandler = (e) => {
+    setFile(e.target.files[0])
+  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -18,7 +23,6 @@ const Register = () => {
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
-    const file = e.target[3].files[0];
 
     try {
       const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -66,9 +70,16 @@ const Register = () => {
           <input placeholder="Введите почту" type='email' />
           <input placeholder='Введите пароль' type='password' />
           <label>
-            <input style={{ display: 'none' }} type='file' />
+            <input onChange={fileChangeHandler}
+              style={{ display: 'none' }}
+              type='file'
+            />
             <img src={addIcon} alt="загрузить" />
-            Загрузить фото
+            {file ?
+              <div className={classes.inputFile}>
+                <img src={URL.createObjectURL(file)} />
+                {file.name}
+              </div> : 'Загрузить фото'}
           </label>
           <Button type='submit'>Зарегистрироваться</Button>
         </form>

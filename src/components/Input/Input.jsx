@@ -17,14 +17,22 @@ const Input = () => {
   const currentUser = useContext(AuthContext);
   const { state } = useContext(ChatContext);
 
+  const keyDownHandler = (e) => {
+    if(e.key === 'Enter') {
+      handleSend()
+    }
+  }
+
   const handleSend = async () => {
+    setText('');
+    setImg(null);
+    
     if (img) {
       const storageRef = ref(storage, uuid());
       const uploadTask = uploadBytesResumable(storageRef, img);
       
-      uploadTask.on(
+      uploadTask.then(
         (err) => {
-
         },
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
@@ -66,14 +74,13 @@ const Input = () => {
       [state.chatId + '.date']: serverTimestamp()
     })
 
-    setText('');
-    setImg(null);
   }
 
   return (
     <div className={classes.inputContainer}>
       <input
         value={text}
+        onKeyDown={keyDownHandler}
         onChange={(e) => setText(e.target.value)}
         className={classes.input}
         type='text'
