@@ -11,9 +11,13 @@ const Navbar = () => {
         <div className={classes.navbar}>
             <span className={classes.logo}>Мой чат</span>
             <div className={classes.userInfo}>
-                <img src={photoURL} alt='фото' />
-                <span>{displayName}</span>
-                <Button onClick={() => signOut(auth)}>Выйти</Button>
+                {displayName &&  photoURL &&
+                    <>
+                        <img src={photoURL} alt='фото' />
+                        <span>{displayName}</span>
+                    </>
+                }
+                <Button variant='secondary' onClick={() => signOut(auth)}>Выйти</Button>
             </div>
         </div>
     )

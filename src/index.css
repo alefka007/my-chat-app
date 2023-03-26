@@ -39,7 +39,8 @@ body {
   --border-radius: 4px;
   --primary-color: #2c3b46;
   --active-btn: #425969;
-  --bg-btn-color: white;
+  --primary-btn-color: white;
+  --secondary-btn-color: lightblue;
   --bg-color-message: #dbe3ed;
   --bg-btn-active-color: #93B5C6;
   --bg-color-primary: whitesmoke;

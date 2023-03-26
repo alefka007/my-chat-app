@@ -34,7 +34,7 @@ const Login = () => {
         {error && <span className={classes.errorMessage}>Что то пошло не так!</span>}
           <input placeholder="Введите почту" type='email' />
           <input placeholder='Введите пароль' type='password' />
-          <Button type='submit'>Войти</Button>
+          <Button variant='primary' type='submit'>Войти</Button>
         </form>
         <span className={classes.link}>У вас уже есть аккаунт? <Link to='/register'>Зарегистрироваться</Link></span>
       </div>

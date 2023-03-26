@@ -7,8 +7,9 @@ import Messages from '../Messages/Messages';
 import Input from '../Input/Input';
 import { ChatContext } from '../../context/ChatContext';
 
-const Chat = () => {
+const Chat: React.FC = () => {
   const { state } = useContext(ChatContext);
+
   return (
     <div className={classes.chat}>
       <div className={classes.chatInfo}>

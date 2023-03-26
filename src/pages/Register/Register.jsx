@@ -81,7 +81,7 @@ const Register = () => {
                 {file.name}
               </div> : 'Загрузить фото'}
           </label>
-          <Button type='submit'>Зарегистрироваться</Button>
+          <Button variant='primary' type='submit'>Зарегистрироваться</Button>
         </form>
         <span className={classes.link}>У вас уже есть аккаунт? <Link to='/login'>Авторизоваться</Link></span>
       </div>
